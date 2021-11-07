@@ -1,0 +1,20 @@
+#######################################
+# Syntax Coloring Map For Encoder
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Encoder	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+setPosition         KEYWORD2
+setStepPosition     KEYWORD2
+setSwitchInit       KEYWORD2
+
+getPosition         KEYWORD2
+getSwitchToggle     KEYWORD2
