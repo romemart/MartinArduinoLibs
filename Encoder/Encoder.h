@@ -32,11 +32,11 @@ class Encoder{
    int pinSW;       //pin Sw is connected
    int intMin;      //minimum position rotary shaft 
    int intMax;      //maximum position rotary shaft
-   int currPos;     //current position rotary shaft
+   volatile int currPos;     //current position rotary shaft
    int prevPos;     //previous position rotary shaft
    int stepPos;     //presition of each click position (one to one or customed)
 
-   unsigned long rotLastRunTime; //rotary encoder last run time saved
+   volatile unsigned long rotLastRunTime; //rotary encoder last run time saved
    unsigned long swInitialRunTime; //switch encoder initial run time saved
  };
 

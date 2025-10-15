@@ -1,18 +1,18 @@
 #include "Encoder.h"
 
 Encoder::Encoder(int SW,bool init=false){
-  Encoder::setSwitchPin(SW,init);
+  this->setSwitchPin(SW,init);
  };
 
 Encoder::Encoder(int minimum, int maximum, int CLK, int DT,void* interruptHandler){
-  Encoder::setRotaryEncoder(minimum, maximum, CLK, DT, interruptHandler);
+  this->setRotaryEncoder(minimum, maximum, CLK, DT, interruptHandler);
  };
 
 Encoder::Encoder(int minimum, int maximum, int CLK, int DT, int SW, void* interruptHandler){
   
-  Encoder::setRotaryEncoder(minimum, maximum, CLK, DT,interruptHandler);
+  this->setRotaryEncoder(minimum, maximum, CLK, DT,interruptHandler);
 
-  Encoder::setSwitchPin(SW);
+  this->setSwitchPin(SW);
  };
 
 void Encoder::interruptHandling(){
@@ -97,8 +97,11 @@ void Encoder::setSwitchInit(bool value){
  };
 
 volatile int Encoder::getPosition(){
-  if(prevPos!=currPos) prevPos=currPos;
-  return currPos;
+  noInterrupts(); // Disable all gloval interrups
+  int safePos = currPos;   // copy value safely
+  interrupts();   // Enable all gloval interrups
+  if(prevPos!=safePos) prevPos=safePos;
+  return safePos;
  };
 
 bool Encoder::getSwitchToggle(){
